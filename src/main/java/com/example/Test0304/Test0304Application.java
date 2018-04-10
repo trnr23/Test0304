@@ -3,13 +3,13 @@ package com.example.Test0304;
 import java.io.IOException;
 
 import com.example.Test0304.Model.Item;
+import com.example.Test0304.Service.ItemServiceImp;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import javax.security.auth.login.AppConfigurationEntry;
-import javax.security.auth.login.Configuration;
 
 @SpringBootApplication
 public class Test0304Application {
@@ -42,8 +42,31 @@ public class Test0304Application {
 			System.out.println("\nOBJECT: " + object);
 		}
 
-		//DB test
+		//получаем первый объект из строки
 		Item testItem = new Item();
+		ObjectMapper objectMapper = new ObjectMapper();
+
+		String str = jsonArray.get(0).toString();
+		System.out.println("Str: " + str);
+		try {
+			testItem = objectMapper.readValue(str, Item.class);
+
+		}catch (Exception e){
+			System.out.println("Error while creating object");
+			e.fillInStackTrace();
+		}
+
+		System.out.println("ID объекта: " + testItem.getId());
+
+
+		//DB test
+		System.out.println("TESTING DB");
+
+		ItemServiceImp itemServiceImp = new ItemServiceImp();
+		itemServiceImp.saveItem(testItem);
+
+
+
 
 
 

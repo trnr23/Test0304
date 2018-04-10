@@ -1,6 +1,9 @@
 package com.example.Test0304.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.boot.jackson.JsonComponent;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
