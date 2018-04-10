@@ -29,6 +29,7 @@ public class Item implements java.io.Serializable {
     private String id;
 
     public Item() {
+        this.id = "42";
     }
 
     public Item(String hash, String format, String url, String title, String documentOf, String datePublished, String dateModified, String relatedItem, String id) {
