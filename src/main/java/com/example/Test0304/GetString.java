@@ -16,6 +16,7 @@ public class GetString {
         }
         catch (NullPointerException e){
             e.fillInStackTrace();
+            return "Error";
         }
 
     }
